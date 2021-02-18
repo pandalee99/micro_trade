@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sodse.trade.mapper.OrderSheetMapper">
+  <resultMap id="BaseResultMap" type="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    <!--@Table micro_trade.order_sheet-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="comment_word" jdbcType="VARCHAR" property="commentWord" />
+    <result column="comment_img" jdbcType="VARCHAR" property="commentImg" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="courier" jdbcType="VARCHAR" property="courier" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="sum_money" jdbcType="DECIMAL" property="sumMoney" />
+    <result column="product_properties" jdbcType="VARCHAR" property="productProperties" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_img" jdbcType="VARCHAR" property="productImg" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, product_id, `name`, phone, address, `state`, comment_word, comment_img, 
+    note, courier, amount, sum_money, product_properties, `time`, product_name, product_img, 
+    product_price
+  </sql>
+  <select id="selectByExample" parameterType="com.sodse.trade.domain.OrderSheetExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from micro_trade.order_sheet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from micro_trade.order_sheet
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from micro_trade.order_sheet
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sodse.trade.domain.OrderSheetExample">
+    <!--@mbg.generated-->
+    delete from micro_trade.order_sheet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    insert into micro_trade.order_sheet (id, user_id, product_id, 
+      `name`, phone, address, 
+      `state`, comment_word, comment_img, 
+      note, courier, amount, 
+      sum_money, product_properties, `time`, 
+      product_name, product_img, product_price
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{commentWord,jdbcType=VARCHAR}, #{commentImg,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{courier,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
+      #{sumMoney,jdbcType=DECIMAL}, #{productProperties,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{productImg,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    insert into micro_trade.order_sheet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="commentWord != null">
+        comment_word,
+      </if>
+      <if test="commentImg != null">
+        comment_img,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="courier != null">
+        courier,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="sumMoney != null">
+        sum_money,
+      </if>
+      <if test="productProperties != null">
+        product_properties,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productImg != null">
+        product_img,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="commentWord != null">
+        #{commentWord,jdbcType=VARCHAR},
+      </if>
+      <if test="commentImg != null">
+        #{commentImg,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null">
+        #{courier,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="sumMoney != null">
+        #{sumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="productProperties != null">
+        #{productProperties,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productImg != null">
+        #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sodse.trade.domain.OrderSheetExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from micro_trade.order_sheet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update micro_trade.order_sheet
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=INTEGER},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        `state` = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentWord != null">
+        comment_word = #{record.commentWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentImg != null">
+        comment_img = #{record.commentImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.note != null">
+        note = #{record.note,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courier != null">
+        courier = #{record.courier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null">
+        amount = #{record.amount,jdbcType=INTEGER},
+      </if>
+      <if test="record.sumMoney != null">
+        sum_money = #{record.sumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productProperties != null">
+        product_properties = #{record.productProperties,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null">
+        `time` = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productName != null">
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productImg != null">
+        product_img = #{record.productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productPrice != null">
+        product_price = #{record.productPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update micro_trade.order_sheet
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=INTEGER},
+      address = #{record.address,jdbcType=VARCHAR},
+      `state` = #{record.state,jdbcType=VARCHAR},
+      comment_word = #{record.commentWord,jdbcType=VARCHAR},
+      comment_img = #{record.commentImg,jdbcType=VARCHAR},
+      note = #{record.note,jdbcType=VARCHAR},
+      courier = #{record.courier,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=INTEGER},
+      sum_money = #{record.sumMoney,jdbcType=DECIMAL},
+      product_properties = #{record.productProperties,jdbcType=VARCHAR},
+      `time` = #{record.time,jdbcType=VARCHAR},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_img = #{record.productImg,jdbcType=VARCHAR},
+      product_price = #{record.productPrice,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    update micro_trade.order_sheet
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="commentWord != null">
+        comment_word = #{commentWord,jdbcType=VARCHAR},
+      </if>
+      <if test="commentImg != null">
+        comment_img = #{commentImg,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null">
+        courier = #{courier,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="sumMoney != null">
+        sum_money = #{sumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="productProperties != null">
+        product_properties = #{productProperties,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productImg != null">
+        product_img = #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    update micro_trade.order_sheet
+    set user_id = #{userId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR},
+      comment_word = #{commentWord,jdbcType=VARCHAR},
+      comment_img = #{commentImg,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      courier = #{courier,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      sum_money = #{sumMoney,jdbcType=DECIMAL},
+      product_properties = #{productProperties,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_img = #{productImg,jdbcType=VARCHAR},
+      product_price = #{productPrice,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update micro_trade.order_sheet
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="product_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.phone,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.address,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`state` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.state,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="comment_word = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.commentWord,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="comment_img = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.commentImg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="note = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="courier = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.courier,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="amount = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.amount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="sum_money = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.sumMoney,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="product_properties = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.productProperties,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.time,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.productName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_img = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.productImg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_price = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.productPrice,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into micro_trade.order_sheet
+    (id, user_id, product_id, `name`, phone, address, `state`, comment_word, comment_img, 
+      note, courier, amount, sum_money, product_properties, `time`, product_name, product_img, 
+      product_price)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.userId,jdbcType=BIGINT}, #{item.productId,jdbcType=BIGINT}, 
+        #{item.name,jdbcType=VARCHAR}, #{item.phone,jdbcType=INTEGER}, #{item.address,jdbcType=VARCHAR}, 
+        #{item.state,jdbcType=VARCHAR}, #{item.commentWord,jdbcType=VARCHAR}, #{item.commentImg,jdbcType=VARCHAR}, 
+        #{item.note,jdbcType=VARCHAR}, #{item.courier,jdbcType=VARCHAR}, #{item.amount,jdbcType=INTEGER}, 
+        #{item.sumMoney,jdbcType=DECIMAL}, #{item.productProperties,jdbcType=VARCHAR}, 
+        #{item.time,jdbcType=VARCHAR}, #{item.productName,jdbcType=VARCHAR}, #{item.productImg,jdbcType=VARCHAR}, 
+        #{item.productPrice,jdbcType=DECIMAL})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    insert into micro_trade.order_sheet
+    (id, user_id, product_id, `name`, phone, address, `state`, comment_word, comment_img, 
+      note, courier, amount, sum_money, product_properties, `time`, product_name, product_img, 
+      product_price)
+    values
+    (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{commentWord,jdbcType=VARCHAR}, #{commentImg,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{courier,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
+      #{sumMoney,jdbcType=DECIMAL}, #{productProperties,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{productImg,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}
+      )
+    on duplicate key update 
+    id = #{id,jdbcType=BIGINT}, 
+    user_id = #{userId,jdbcType=BIGINT}, 
+    product_id = #{productId,jdbcType=BIGINT}, 
+    `name` = #{name,jdbcType=VARCHAR}, 
+    phone = #{phone,jdbcType=INTEGER}, 
+    address = #{address,jdbcType=VARCHAR}, 
+    `state` = #{state,jdbcType=VARCHAR}, 
+    comment_word = #{commentWord,jdbcType=VARCHAR}, 
+    comment_img = #{commentImg,jdbcType=VARCHAR}, 
+    note = #{note,jdbcType=VARCHAR}, 
+    courier = #{courier,jdbcType=VARCHAR}, 
+    amount = #{amount,jdbcType=INTEGER}, 
+    sum_money = #{sumMoney,jdbcType=DECIMAL}, 
+    product_properties = #{productProperties,jdbcType=VARCHAR}, 
+    `time` = #{time,jdbcType=VARCHAR}, 
+    product_name = #{productName,jdbcType=VARCHAR}, 
+    product_img = #{productImg,jdbcType=VARCHAR}, 
+    product_price = #{productPrice,jdbcType=DECIMAL}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.sodse.trade.domain.OrderSheet">
+    <!--@mbg.generated-->
+    insert into micro_trade.order_sheet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="commentWord != null">
+        comment_word,
+      </if>
+      <if test="commentImg != null">
+        comment_img,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="courier != null">
+        courier,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="sumMoney != null">
+        sum_money,
+      </if>
+      <if test="productProperties != null">
+        product_properties,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productImg != null">
+        product_img,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="commentWord != null">
+        #{commentWord,jdbcType=VARCHAR},
+      </if>
+      <if test="commentImg != null">
+        #{commentImg,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null">
+        #{courier,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="sumMoney != null">
+        #{sumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="productProperties != null">
+        #{productProperties,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productImg != null">
+        #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="commentWord != null">
+        comment_word = #{commentWord,jdbcType=VARCHAR},
+      </if>
+      <if test="commentImg != null">
+        comment_img = #{commentImg,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null">
+        courier = #{courier,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="sumMoney != null">
+        sum_money = #{sumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="productProperties != null">
+        product_properties = #{productProperties,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productImg != null">
+        product_img = #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+<!--auto generated by MybatisCodeHelper on 2021-01-23-->
+  <!--auto generated by MybatisCodeHelper on 2021-01-23-->
+  <select id="selectOneById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from micro_trade.order_sheet
+    where id=#{id,jdbcType=BIGINT}
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-01-25-->
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from micro_trade.order_sheet
+    where user_id=#{userId,jdbcType=BIGINT}
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-01-25-->
+  <delete id="delete">
+    delete from  micro_trade.order_sheet
+  </delete>
+</mapper>

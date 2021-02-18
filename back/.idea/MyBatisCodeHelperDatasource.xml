@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="addSchemaName" value="true" />
+        <option name="addSerializeUid" value="true" />
+        <option name="batchInsert" value="true" />
+        <option name="generateService" value="true" />
+        <option name="generateServiceInterface" value="true" />
+        <option name="insertOnDuplicateKey" value="true" />
+        <option name="javaMapperPackage" value="com.sodse.trade.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/trade/src/main/java" />
+        <option name="javaModelPackage" value="com.sodse.trade.domain" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/trade/src/main/java" />
+        <option name="javaModelTrimString" value="true" />
+        <option name="lastDatabaseCrudChooseModuleName" value="trade" />
+        <option name="mapperAnnotaion" value="true" />
+        <option name="modelAddToString" value="true" />
+        <option name="moduleNameToPackageAndPathMap">
+          <map>
+            <entry key="trade">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.sodse.trade.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/trade/src/main/java" />
+                  <option name="javaModelPacakge" value="com.sodse.trade.domain" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/trade/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.sodse.trade.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/trade/src/main/java" />
+                  <option name="javaServicePackage" value="com.sodse.trade.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/trade/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/trade/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="p3CComment" value="true" />
+        <option name="tableGenerateConfigs">
+          <map>
+            <entry key="micro_trade:bank_card">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="BankCard" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:brand">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="Brand" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:category">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="Category" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:chat_record">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="ChatRecord" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:coupons">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="Coupons" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:images">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="Images" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:merchant_move_news">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="MerchantMoveNews" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:merchant_product">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="MerchantProduct" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:merchants">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="Merchants" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:order_sheet">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="OrderSheet" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:product">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="Product" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:product_refund">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="ProductRefund" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:shopping_cart">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="ShoppingCart" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:user">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="User" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:user_browsing_history">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="UserBrowsingHistory" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:user_care_merchants">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="UserCareMerchants" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:user_collection">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="UserCollection" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:user_friend">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="UserFriend" />
+                  <option name="moduleName" value="trade" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="micro_trade:user_info">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="UserInfo" />
+                  <option name="moduleName" value="trade" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="updateBatch" value="true" />
+        <option name="useExample" value="true" />
+        <option name="useSwagger" value="true" />
+        <option name="xmlMapperPackage" value="mapperxml" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/trade/src/main/resources" />
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

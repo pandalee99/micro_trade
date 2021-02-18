@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sodse.trade.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    <!--@Table micro_trade.`user`-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="id_card" jdbcType="BIGINT" property="idCard" />
+    <result column="id_img" jdbcType="VARCHAR" property="idImg" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="user_nickname" jdbcType="VARCHAR" property="userNickname" />
+    <result column="user_img" jdbcType="VARCHAR" property="userImg" />
+    <result column="roles" jdbcType="VARCHAR" property="roles" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="bank_card" jdbcType="BIGINT" property="bankCard" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="coupon" jdbcType="BIGINT" property="coupon" />
+    <result column="authorities" jdbcType="VARCHAR" property="authorities" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, username, `password`, sex, id_card, id_img, flag, `level`, user_nickname, user_img, 
+    roles, money, bank_card, description, coupon, authorities
+  </sql>
+  <select id="selectByExample" parameterType="com.sodse.trade.domain.UserExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from micro_trade.`user`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from micro_trade.`user`
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from micro_trade.`user`
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sodse.trade.domain.UserExample">
+    <!--@mbg.generated-->
+    delete from micro_trade.`user`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    insert into micro_trade.`user` (id, username, `password`, 
+      sex, id_card, id_img, 
+      flag, `level`, user_nickname, 
+      user_img, roles, money, 
+      bank_card, description, coupon, 
+      authorities)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{idCard,jdbcType=BIGINT}, #{idImg,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{userNickname,jdbcType=VARCHAR}, 
+      #{userImg,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
+      #{bankCard,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{coupon,jdbcType=BIGINT}, 
+      #{authorities,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    insert into micro_trade.`user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="idImg != null">
+        id_img,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="userNickname != null">
+        user_nickname,
+      </if>
+      <if test="userImg != null">
+        user_img,
+      </if>
+      <if test="roles != null">
+        roles,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="bankCard != null">
+        bank_card,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="coupon != null">
+        coupon,
+      </if>
+      <if test="authorities != null">
+        authorities,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=BIGINT},
+      </if>
+      <if test="idImg != null">
+        #{idImg,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null">
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null">
+        #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCard != null">
+        #{bankCard,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        #{coupon,jdbcType=BIGINT},
+      </if>
+      <if test="authorities != null">
+        #{authorities,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sodse.trade.domain.UserExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from micro_trade.`user`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update micro_trade.`user`
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        `password` = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCard != null">
+        id_card = #{record.idCard,jdbcType=BIGINT},
+      </if>
+      <if test="record.idImg != null">
+        id_img = #{record.idImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null">
+        `level` = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.userNickname != null">
+        user_nickname = #{record.userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userImg != null">
+        user_img = #{record.userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roles != null">
+        roles = #{record.roles,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bankCard != null">
+        bank_card = #{record.bankCard,jdbcType=BIGINT},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coupon != null">
+        coupon = #{record.coupon,jdbcType=BIGINT},
+      </if>
+      <if test="record.authorities != null">
+        authorities = #{record.authorities,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update micro_trade.`user`
+    set id = #{record.id,jdbcType=BIGINT},
+      username = #{record.username,jdbcType=VARCHAR},
+      `password` = #{record.password,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      id_card = #{record.idCard,jdbcType=BIGINT},
+      id_img = #{record.idImg,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=INTEGER},
+      `level` = #{record.level,jdbcType=INTEGER},
+      user_nickname = #{record.userNickname,jdbcType=VARCHAR},
+      user_img = #{record.userImg,jdbcType=VARCHAR},
+      roles = #{record.roles,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=DECIMAL},
+      bank_card = #{record.bankCard,jdbcType=BIGINT},
+      description = #{record.description,jdbcType=VARCHAR},
+      coupon = #{record.coupon,jdbcType=BIGINT},
+      authorities = #{record.authorities,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    update micro_trade.`user`
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=BIGINT},
+      </if>
+      <if test="idImg != null">
+        id_img = #{idImg,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null">
+        user_nickname = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null">
+        roles = #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCard != null">
+        bank_card = #{bankCard,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        coupon = #{coupon,jdbcType=BIGINT},
+      </if>
+      <if test="authorities != null">
+        authorities = #{authorities,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    update micro_trade.`user`
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=BIGINT},
+      id_img = #{idImg,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      user_nickname = #{userNickname,jdbcType=VARCHAR},
+      user_img = #{userImg,jdbcType=VARCHAR},
+      roles = #{roles,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      bank_card = #{bankCard,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      coupon = #{coupon,jdbcType=BIGINT},
+      authorities = #{authorities,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update micro_trade.`user`
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="username = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.username,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`password` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.password,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="sex = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.sex,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="id_card = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.idCard,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="id_img = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.idImg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="flag = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.flag,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`level` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.level,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="user_nickname = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userNickname,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="user_img = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userImg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="roles = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.roles,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="money = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.money,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="bank_card = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.bankCard,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="description = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.description,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="coupon = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.coupon,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="authorities = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.authorities,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into micro_trade.`user`
+    (id, username, `password`, sex, id_card, id_img, flag, `level`, user_nickname, user_img, 
+      roles, money, bank_card, description, coupon, authorities)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.username,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, 
+        #{item.sex,jdbcType=VARCHAR}, #{item.idCard,jdbcType=BIGINT}, #{item.idImg,jdbcType=VARCHAR}, 
+        #{item.flag,jdbcType=INTEGER}, #{item.level,jdbcType=INTEGER}, #{item.userNickname,jdbcType=VARCHAR}, 
+        #{item.userImg,jdbcType=VARCHAR}, #{item.roles,jdbcType=VARCHAR}, #{item.money,jdbcType=DECIMAL}, 
+        #{item.bankCard,jdbcType=BIGINT}, #{item.description,jdbcType=VARCHAR}, #{item.coupon,jdbcType=BIGINT}, 
+        #{item.authorities,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    insert into micro_trade.`user`
+    (id, username, `password`, sex, id_card, id_img, flag, `level`, user_nickname, user_img, 
+      roles, money, bank_card, description, coupon, authorities)
+    values
+    (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{idCard,jdbcType=BIGINT}, #{idImg,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{userNickname,jdbcType=VARCHAR}, 
+      #{userImg,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
+      #{bankCard,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{coupon,jdbcType=BIGINT}, 
+      #{authorities,jdbcType=VARCHAR})
+    on duplicate key update 
+    id = #{id,jdbcType=BIGINT}, 
+    username = #{username,jdbcType=VARCHAR}, 
+    `password` = #{password,jdbcType=VARCHAR}, 
+    sex = #{sex,jdbcType=VARCHAR}, 
+    id_card = #{idCard,jdbcType=BIGINT}, 
+    id_img = #{idImg,jdbcType=VARCHAR}, 
+    flag = #{flag,jdbcType=INTEGER}, 
+    `level` = #{level,jdbcType=INTEGER}, 
+    user_nickname = #{userNickname,jdbcType=VARCHAR}, 
+    user_img = #{userImg,jdbcType=VARCHAR}, 
+    roles = #{roles,jdbcType=VARCHAR}, 
+    money = #{money,jdbcType=DECIMAL}, 
+    bank_card = #{bankCard,jdbcType=BIGINT}, 
+    description = #{description,jdbcType=VARCHAR}, 
+    coupon = #{coupon,jdbcType=BIGINT}, 
+    authorities = #{authorities,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.sodse.trade.domain.User">
+    <!--@mbg.generated-->
+    insert into micro_trade.`user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="idImg != null">
+        id_img,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="userNickname != null">
+        user_nickname,
+      </if>
+      <if test="userImg != null">
+        user_img,
+      </if>
+      <if test="roles != null">
+        roles,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="bankCard != null">
+        bank_card,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="coupon != null">
+        coupon,
+      </if>
+      <if test="authorities != null">
+        authorities,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=BIGINT},
+      </if>
+      <if test="idImg != null">
+        #{idImg,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null">
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null">
+        #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCard != null">
+        #{bankCard,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        #{coupon,jdbcType=BIGINT},
+      </if>
+      <if test="authorities != null">
+        #{authorities,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=BIGINT},
+      </if>
+      <if test="idImg != null">
+        id_img = #{idImg,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null">
+        user_nickname = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null">
+        roles = #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCard != null">
+        bank_card = #{bankCard,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        coupon = #{coupon,jdbcType=BIGINT},
+      </if>
+      <if test="authorities != null">
+        authorities = #{authorities,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+<!--auto generated by MybatisCodeHelper on 2021-01-12-->
+  <select id="findByUsername" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from micro_trade.`user`
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-01-20-->
+  <select id="selectById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from micro_trade.`user`
+    where id=#{id,jdbcType=BIGINT}
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-01-20-->
+  <select id="selectByUsername" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from micro_trade.`user`
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-01-20-->
+  <select id="selectOneByUsername" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from micro_trade.`user`
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-01-23-->
+  <delete id="delete">
+    delete from  micro_trade.`user`
+  </delete>
+<!--auto generated by MybatisCodeHelper on 2021-01-28-->
+  <select id="find" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from micro_trade.`user`
+  </select>
+<!--auto generated by MybatisCodeHelper on 2021-02-05-->
+  <select id="selectOneByUsernameAndPassword" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from micro_trade.`user`
+    where username=#{username,jdbcType=VARCHAR} and `password`=#{password,jdbcType=VARCHAR}
+  </select>
+</mapper>

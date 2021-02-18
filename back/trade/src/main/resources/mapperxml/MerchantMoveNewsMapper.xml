@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sodse.trade.mapper.MerchantMoveNewsMapper">
+  <resultMap id="BaseResultMap" type="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    <!--@Table micro_trade.merchant_move_news-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="merchant_id" jdbcType="BIGINT" property="merchantId" />
+    <result column="move_new_name" jdbcType="VARCHAR" property="moveNewName" />
+    <result column="move_new_creat_time" jdbcType="VARCHAR" property="moveNewCreatTime" />
+    <result column="move_new_content" jdbcType="VARCHAR" property="moveNewContent" />
+    <result column="move_new_img" jdbcType="VARCHAR" property="moveNewImg" />
+    <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, merchant_id, move_new_name, move_new_creat_time, move_new_content, move_new_img, 
+    merchant_name
+  </sql>
+  <select id="selectByExample" parameterType="com.sodse.trade.domain.MerchantMoveNewsExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from micro_trade.merchant_move_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from micro_trade.merchant_move_news
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from micro_trade.merchant_move_news
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sodse.trade.domain.MerchantMoveNewsExample">
+    <!--@mbg.generated-->
+    delete from micro_trade.merchant_move_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    insert into micro_trade.merchant_move_news (id, merchant_id, move_new_name, 
+      move_new_creat_time, move_new_content, move_new_img, 
+      merchant_name)
+    values (#{id,jdbcType=BIGINT}, #{merchantId,jdbcType=BIGINT}, #{moveNewName,jdbcType=VARCHAR}, 
+      #{moveNewCreatTime,jdbcType=VARCHAR}, #{moveNewContent,jdbcType=VARCHAR}, #{moveNewImg,jdbcType=VARCHAR}, 
+      #{merchantName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    insert into micro_trade.merchant_move_news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="merchantId != null">
+        merchant_id,
+      </if>
+      <if test="moveNewName != null">
+        move_new_name,
+      </if>
+      <if test="moveNewCreatTime != null">
+        move_new_creat_time,
+      </if>
+      <if test="moveNewContent != null">
+        move_new_content,
+      </if>
+      <if test="moveNewImg != null">
+        move_new_img,
+      </if>
+      <if test="merchantName != null">
+        merchant_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null">
+        #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="moveNewName != null">
+        #{moveNewName,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewCreatTime != null">
+        #{moveNewCreatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewContent != null">
+        #{moveNewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewImg != null">
+        #{moveNewImg,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null">
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sodse.trade.domain.MerchantMoveNewsExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from micro_trade.merchant_move_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update micro_trade.merchant_move_news
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.merchantId != null">
+        merchant_id = #{record.merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="record.moveNewName != null">
+        move_new_name = #{record.moveNewName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moveNewCreatTime != null">
+        move_new_creat_time = #{record.moveNewCreatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moveNewContent != null">
+        move_new_content = #{record.moveNewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moveNewImg != null">
+        move_new_img = #{record.moveNewImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantName != null">
+        merchant_name = #{record.merchantName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update micro_trade.merchant_move_news
+    set id = #{record.id,jdbcType=BIGINT},
+      merchant_id = #{record.merchantId,jdbcType=BIGINT},
+      move_new_name = #{record.moveNewName,jdbcType=VARCHAR},
+      move_new_creat_time = #{record.moveNewCreatTime,jdbcType=VARCHAR},
+      move_new_content = #{record.moveNewContent,jdbcType=VARCHAR},
+      move_new_img = #{record.moveNewImg,jdbcType=VARCHAR},
+      merchant_name = #{record.merchantName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    update micro_trade.merchant_move_news
+    <set>
+      <if test="merchantId != null">
+        merchant_id = #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="moveNewName != null">
+        move_new_name = #{moveNewName,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewCreatTime != null">
+        move_new_creat_time = #{moveNewCreatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewContent != null">
+        move_new_content = #{moveNewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewImg != null">
+        move_new_img = #{moveNewImg,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null">
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    update micro_trade.merchant_move_news
+    set merchant_id = #{merchantId,jdbcType=BIGINT},
+      move_new_name = #{moveNewName,jdbcType=VARCHAR},
+      move_new_creat_time = #{moveNewCreatTime,jdbcType=VARCHAR},
+      move_new_content = #{moveNewContent,jdbcType=VARCHAR},
+      move_new_img = #{moveNewImg,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update micro_trade.merchant_move_news
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="merchant_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.merchantId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="move_new_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.moveNewName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="move_new_creat_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.moveNewCreatTime,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="move_new_content = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.moveNewContent,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="move_new_img = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.moveNewImg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="merchant_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.merchantName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into micro_trade.merchant_move_news
+    (id, merchant_id, move_new_name, move_new_creat_time, move_new_content, move_new_img, 
+      merchant_name)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.merchantId,jdbcType=BIGINT}, #{item.moveNewName,jdbcType=VARCHAR}, 
+        #{item.moveNewCreatTime,jdbcType=VARCHAR}, #{item.moveNewContent,jdbcType=VARCHAR}, 
+        #{item.moveNewImg,jdbcType=VARCHAR}, #{item.merchantName,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    insert into micro_trade.merchant_move_news
+    (id, merchant_id, move_new_name, move_new_creat_time, move_new_content, move_new_img, 
+      merchant_name)
+    values
+    (#{id,jdbcType=BIGINT}, #{merchantId,jdbcType=BIGINT}, #{moveNewName,jdbcType=VARCHAR}, 
+      #{moveNewCreatTime,jdbcType=VARCHAR}, #{moveNewContent,jdbcType=VARCHAR}, #{moveNewImg,jdbcType=VARCHAR}, 
+      #{merchantName,jdbcType=VARCHAR})
+    on duplicate key update 
+    id = #{id,jdbcType=BIGINT}, 
+    merchant_id = #{merchantId,jdbcType=BIGINT}, 
+    move_new_name = #{moveNewName,jdbcType=VARCHAR}, 
+    move_new_creat_time = #{moveNewCreatTime,jdbcType=VARCHAR}, 
+    move_new_content = #{moveNewContent,jdbcType=VARCHAR}, 
+    move_new_img = #{moveNewImg,jdbcType=VARCHAR}, 
+    merchant_name = #{merchantName,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.sodse.trade.domain.MerchantMoveNews">
+    <!--@mbg.generated-->
+    insert into micro_trade.merchant_move_news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="merchantId != null">
+        merchant_id,
+      </if>
+      <if test="moveNewName != null">
+        move_new_name,
+      </if>
+      <if test="moveNewCreatTime != null">
+        move_new_creat_time,
+      </if>
+      <if test="moveNewContent != null">
+        move_new_content,
+      </if>
+      <if test="moveNewImg != null">
+        move_new_img,
+      </if>
+      <if test="merchantName != null">
+        merchant_name,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null">
+        #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="moveNewName != null">
+        #{moveNewName,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewCreatTime != null">
+        #{moveNewCreatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewContent != null">
+        #{moveNewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewImg != null">
+        #{moveNewImg,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null">
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null">
+        merchant_id = #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="moveNewName != null">
+        move_new_name = #{moveNewName,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewCreatTime != null">
+        move_new_creat_time = #{moveNewCreatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewContent != null">
+        move_new_content = #{moveNewContent,jdbcType=VARCHAR},
+      </if>
+      <if test="moveNewImg != null">
+        move_new_img = #{moveNewImg,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null">
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+<!--auto generated by MybatisCodeHelper on 2021-01-29-->
+  <select id="selectAllByMerchantId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from micro_trade.merchant_move_news
+    where merchant_id=#{merchantId,jdbcType=BIGINT}
+  </select>
+</mapper>
