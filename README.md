@@ -11,7 +11,7 @@
 
 看文章有时候就和看别人家的注释一样，不一定能快速分清楚对方的注释是关键语句还是在水代码行数，所以前面先列出本人做的项目的特点，节约一下阅读的时间，后面会有较为详细的描述。
 
-**实现的模板**：基本CRUD和购物车，秒杀商品，搜索，Socket通信，security安全拦截，微服务等，可以通过：www.sodse.com 进行查看与测试。
+**实现的模板**：基本CRUD和购物车，秒杀商品，搜索，Socket通信，security安全拦截，微服务等。
 
 **一些特点**：
 
@@ -32,27 +32,27 @@
 
 ### 所用技术
 
-1. SpringBoot
-2. MySQL
-3. MyBatis
-4. swagger
-5. SpringSecurity
-6. JWT
-7. Jsoup
-8. fastjson
-9. 七牛云
-10. netty-socketio
-11. qq互联
-12. redis
-13. elasticsearch
-14. spring-boot-admin
-15. eureka
-16. ribbon
-17. docker
-18. Nginx
-19. aliyunEcs
-20. vue
-21. axios
-22. Element-ui
+1. SpringBoot （后端）
+2. MySQL （数据库）
+3. MyBatis （访问数据库）
+4. swagger （集成文档）
+5. SpringSecurity （登录与权限控制）
+6. JWT （单点登录）
+7. Jsoup （爬虫，用于补充数据库的数据）
+8. fastjson （转JSON工具，用于前后端数据交互）
+9. 七牛云 （图床）
+10. netty-socketio （用于用户之间的通信）
+11. qq互联 （实现QQ登录）
+12. redis （中间件，用于数据的缓存）
+13. elasticsearch （搜索引擎）
+14. spring-boot-admin （管理后台）
+15. eureka （微服务的注册中心）
+16. ribbon （负载均衡）
+17. docker （容器化）
+18. Nginx （反向代理）
+19. aliyunEcs （服务器）
+20. vue （前端）
+21. axios （前端api） 
+22. Element-ui （前端UI）
 
 
