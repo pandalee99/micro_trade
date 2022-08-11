@@ -1,5 +1,5 @@
 # micro_trade
-由SpringBoot+vue构建了电商平台
+由SpringBoot+vue制作的交易平台
 
 ### 前言
 
