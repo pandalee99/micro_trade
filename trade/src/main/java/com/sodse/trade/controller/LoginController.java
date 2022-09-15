@@ -37,9 +37,6 @@ public class LoginController extends BaseController {
 //                .put("email", user.getEmail())
 //                .map()
 //        );
-        System.out.println();
-        System.out.println("don`t to say");
-        System.out.println("want to do something");
         BCryptPasswordEncoder code=new BCryptPasswordEncoder();
 
         User user= userService.selectOneByUsername(loginDto.getUsername());
