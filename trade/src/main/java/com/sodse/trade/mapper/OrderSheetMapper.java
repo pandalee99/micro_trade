@@ -74,7 +74,6 @@ public interface OrderSheetMapper {
 
     int batchInsert(@Param("list") List<OrderSheet> list);
 
-    int updateBatchSelective(List<OrderSheet> list);
 
     int delete();
 
