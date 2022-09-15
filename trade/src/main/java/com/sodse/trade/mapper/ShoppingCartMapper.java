@@ -74,7 +74,7 @@ public interface ShoppingCartMapper {
 
     int batchInsert(@Param("list") List<ShoppingCart> list);
 
-    int updateBatchSelective(List<ShoppingCart> list);
+
 
     List<ShoppingCart> selectByUserId(@Param("userId") Long userId);
 }

@@ -74,7 +74,6 @@ public interface MerchantMoveNewsMapper {
 
     int batchInsert(@Param("list") List<MerchantMoveNews> list);
 
-    int updateBatchSelective(List<MerchantMoveNews> list);
 
     List<MerchantMoveNews> selectAllByMerchantId(@Param("merchantId")Long merchantId);
 

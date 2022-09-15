@@ -74,7 +74,7 @@ public interface UserMapper {
 
     int batchInsert(@Param("list") List<User> list);
 
-    int updateBatchSelective(List<User> list);
+
 
     List<User> findByUsername(@Param("username") String username);
 
