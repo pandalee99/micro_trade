@@ -1,0 +1,86 @@
+mybatis:
+    mapper-locations: classpath:/mapperxml/*.xml
+    type-aliases-package: com.sodse.trade.mapper
+#    configuration:
+#        map-underscore-to-camel-case: true
+
+spring:
+    datasource:
+        username: root
+        password: 123456
+        #    url: jdbc:mysql://localhost:3306/springtest?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://192.168.17.129:3306/micro_trade?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        tomcat:
+            max-idle: 10
+            max-wait: 10000
+            max-active: 50
+            initial-size: 5
+            default-transaction-isolation: 2
+    redis:
+        jedis:
+            pool:
+                min-idle: 5
+                max-active: 10
+                max-idle: 10
+                max-wait: 2000
+        port: 6379
+        host: 192.168.17.129
+        timeout: 1000
+    application:
+        name: trade8001
+    boot:
+        admin:
+            client:
+                url: http://localhost:9999
+
+
+
+#management:
+#    endpoints:
+#        web:
+#            exposure:
+#                include: '*'
+#    endpoint:
+#        health:
+#            show-details: ALWAYS
+
+qiniu:
+    accessKey: PlGrVg42ThXjuPtdELkswJgiDPbZ_lVxantaE5cW
+    secretKey: GX1pmhNXWvivsIA2Ke4iGxnLCVO3-4_Ujh2Lw3na
+    bucket: imgof
+    prefix: www-sodse-com-idvad2i.qiniudns.com
+#
+socketio:
+    host: localhost
+    port: 9001
+    # 设置最大每帧处理数据的长度，防止他人利用大数据来攻击服务器
+    maxFramePayloadLength: 1048576
+    # 设置http交互最大内容长度
+    maxHttpContentLength: 1048576
+    # socket连接数大小（如只监听一个端口boss线程组为1即可）
+    bossCount: 1
+    workCount: 100
+    allowCustomRequests: true
+    # 协议升级超时时间（毫秒），默认10秒。HTTP握手升级为ws协议超时时间
+    upgradeTimeout: 1000000
+    # Ping消息超时时间（毫秒），默认60秒，这个时间间隔内没有接收到心跳消息就会发送超时事件
+    pingTimeout: 6000000
+    # Ping消息间隔（毫秒），默认25秒。客户端向服务器发送一条心跳消息间隔
+    pingInterval: 25000
+
+
+#management:
+#    endpoints:
+#        web:
+#            exposure:
+#                include:*
+
+server:
+    port: 8001
+#eureka:
+#    instance:
+#        prefer-ip-address: true #注册服务的时候使用ip
+#    client:
+#        service-url:
+#            defaultZone: http://localhost:8761/eureka/
