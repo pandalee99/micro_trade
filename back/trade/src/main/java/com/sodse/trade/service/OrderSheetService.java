@@ -35,7 +35,7 @@ public interface OrderSheetService {
 
     int updateBatch(List<OrderSheet> list);
 
-    int updateBatchSelective(List<OrderSheet> list);
+
 
     int batchInsert(List<OrderSheet> list);
 
