@@ -4,7 +4,7 @@
 
 
 
-yml改为了虚拟机，当然你也可以继续使用localhost
+yml改为了虚拟机地址，当然你也可以继续使用localhost
 
 ```
 url: jdbc:mysql://192.168.17.129:3306/micro_trade?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
@@ -12,7 +12,7 @@ url: jdbc:mysql://192.168.17.129:3306/micro_trade?useSSL=false&serverTimezone=GM
 
 
 
-原版必须启动eureka之后才能继续启动主服务，这个版本不用启动eureka
+原版必须启动eureka之后才能继续启动主服务，这个版本不用启动eureka和admin，节省了测试时间
 
 
 
