@@ -35,7 +35,6 @@ public interface MerchantMoveNewsService {
 
     int updateBatch(List<MerchantMoveNews> list);
 
-    int updateBatchSelective(List<MerchantMoveNews> list);
 
     int batchInsert(List<MerchantMoveNews> list);
 

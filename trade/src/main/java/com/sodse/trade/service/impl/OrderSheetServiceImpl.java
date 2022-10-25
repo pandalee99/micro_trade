@@ -84,10 +84,6 @@ public class OrderSheetServiceImpl implements OrderSheetService {
         return orderSheetMapper.updateBatch(list);
     }
 
-    @Override
-    public int updateBatchSelective(List<OrderSheet> list) {
-        return orderSheetMapper.updateBatchSelective(list);
-    }
 
     @Override
     public int batchInsert(List<OrderSheet> list) {

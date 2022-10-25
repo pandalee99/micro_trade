@@ -84,10 +84,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCartMapper.updateBatch(list);
     }
 
-    @Override
-    public int updateBatchSelective(List<ShoppingCart> list) {
-        return shoppingCartMapper.updateBatchSelective(list);
-    }
+
 
     @Override
     public int batchInsert(List<ShoppingCart> list) {

@@ -35,7 +35,7 @@ public interface ShoppingCartService {
 
     int updateBatch(List<ShoppingCart> list);
 
-    int updateBatchSelective(List<ShoppingCart> list);
+
 
     int batchInsert(List<ShoppingCart> list);
 

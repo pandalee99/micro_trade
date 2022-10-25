@@ -36,7 +36,7 @@ public interface UserService {
 
     int updateBatch(List<User> list);
 
-    int updateBatchSelective(List<User> list);
+
 
     int batchInsert(List<User> list);
 

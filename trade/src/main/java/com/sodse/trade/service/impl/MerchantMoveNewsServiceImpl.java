@@ -84,10 +84,7 @@ public class MerchantMoveNewsServiceImpl implements MerchantMoveNewsService {
         return merchantMoveNewsMapper.updateBatch(list);
     }
 
-    @Override
-    public int updateBatchSelective(List<MerchantMoveNews> list) {
-        return merchantMoveNewsMapper.updateBatchSelective(list);
-    }
+
 
     @Override
     public int batchInsert(List<MerchantMoveNews> list) {

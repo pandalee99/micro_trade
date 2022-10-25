@@ -88,10 +88,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateBatch(list);
     }
 
-    @Override
-    public int updateBatchSelective(List<User> list) {
-        return userMapper.updateBatchSelective(list);
-    }
+
 
     @Override
     public int batchInsert(List<User> list) {
