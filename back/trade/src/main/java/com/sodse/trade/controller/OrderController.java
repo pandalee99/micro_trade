@@ -25,25 +25,26 @@ import java.util.Random;
 public class OrderController extends BaseController {
 
     @PostMapping("/add_all_cart_order")
-    public Result add_all_cart_order(@Validated @RequestBody List<OrderSheet> orderSheets , HttpServletResponse response){
-        BigDecimal sum=new BigDecimal(0);
-        for (OrderSheet o:orderSheets) {//List<OrderSheet> orderSheets
+    public Result add_all_cart_order(@Validated @RequestBody List<OrderSheet> orderSheets, HttpServletResponse response) {
+        BigDecimal sum = new BigDecimal(0);
+        for (OrderSheet o : orderSheets) {//List<OrderSheet> orderSheets
             sum.add(o.getSumMoney());
         }
-        String state="余额不足";
-        User user=userService.selectById(orderSheets.get(0).getUserId());
-        BigDecimal money=user
+        String state = "余额不足";
+        User user = userService.selectById(orderSheets.get(0).getUserId());
+        BigDecimal money = user
                 .getMoney()
                 .subtract(sum);
-        if (money.compareTo(new BigDecimal(0))==1){
-        for (OrderSheet o:orderSheets) {//List<OrderSheet> orderSheets
-            o.setState("未收货");
-            orderSheetService.insert(o);
-            shoppingCartService.deleteByPrimaryKey(o.getId());
-            user.setMoney(user.getMoney().subtract(sum));
-            userService.updateByPrimaryKey(user);
-            state="支付成功";
-        }}
+        if (money.compareTo(new BigDecimal(0)) == 1) {
+            for (OrderSheet o : orderSheets) {//List<OrderSheet> orderSheets
+                o.setState("未收货");
+                orderSheetService.insert(o);
+                shoppingCartService.deleteByPrimaryKey(o.getId());
+                user.setMoney(user.getMoney().subtract(sum));
+                userService.updateByPrimaryKey(user);
+                state = "支付成功";
+            }
+        }
 
 
         return Result.succ(state);
@@ -53,19 +54,19 @@ public class OrderController extends BaseController {
 
     @PostMapping("/add_one_cart_order")
     public Result add_one_cart_order(@Validated @RequestBody OrderSheet orderSheet, HttpServletResponse response) {
-        User user=new User();
-        String state="余额不足";
-        user=userService.selectById(orderSheet.getUserId());
-        BigDecimal money=user
+        User user = new User();
+        String state = "余额不足";
+        user = userService.selectById(orderSheet.getUserId());
+        BigDecimal money = user
                 .getMoney()
                 .subtract(orderSheet.getSumMoney());
-        if (money.compareTo(new BigDecimal(0))==1){
+        if (money.compareTo(new BigDecimal(0)) == 1) {
             orderSheet.setState("未收货");
             orderSheetService.insert(orderSheet);
             user.setMoney(user.getMoney().subtract(orderSheet.getSumMoney()));
             userService.updateByPrimaryKey(user);
             shoppingCartService.deleteByPrimaryKey(orderSheet.getId());
-            state="支付成功";
+            state = "支付成功";
         }
 
         return Result.succ(state);
@@ -80,10 +81,10 @@ public class OrderController extends BaseController {
     }
 
     @GetMapping("/prepared_to_pay/{id}")
-    public Result prepared_to_pay (@PathVariable(name = "id") Long id){
-        OrderSheet orderSheet=new OrderSheet();
+    public Result prepared_to_pay(@PathVariable(name = "id") Long id) {
+        OrderSheet orderSheet = new OrderSheet();
 //        System.out.println(id);
-        orderSheet=orderSheetService.selectOneById(id);
+        orderSheet = orderSheetService.selectOneById(id);
 //        System.out.println(JSON.toJSONString(orderSheet));
 //        System.out.println("zx");
 
@@ -96,22 +97,22 @@ public class OrderController extends BaseController {
 
 //        System.out.println(orderSheet.getId());
 
-        User user=new User();
-        String state="余额不足";
-        user=userService.selectById(orderSheet.getUserId());
-        BigDecimal money=user
+        User user = new User();
+        String state = "余额不足";
+        user = userService.selectById(orderSheet.getUserId());
+        BigDecimal money = user
                 .getMoney()
                 .subtract(orderSheet.getSumMoney());
 //        System.out.println(money);
 //        System.out.println(money.compareTo(new BigDecimal(0)));
-        if (money.compareTo(new BigDecimal(0))==1){
+        if (money.compareTo(new BigDecimal(0)) == 1) {
 //            System.out.println("执行");
             orderSheet.setState("未收货");
             orderSheetService.updateByPrimaryKey(orderSheet);
 //            System.out.println(orderSheetService.selectOneById(orderSheet.getId()).getState());
             user.setMoney(user.getMoney().subtract(orderSheet.getSumMoney()));
             userService.updateByPrimaryKey(user);
-            state="支付成功";
+            state = "支付成功";
         }
 
         return Result.succ(state);
@@ -160,17 +161,17 @@ public class OrderController extends BaseController {
     public Result add_order(@Validated @RequestBody OrderSheet orderSheet, HttpServletResponse response) {
         orderSheet.setId(new RandomId().nextId());
         orderSheet.setTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        Product product=productService.selectOneById(orderSheet.getProductId());
+        Product product = productService.selectOneById(orderSheet.getProductId());
         orderSheet.setSumMoney(product.getPrice().multiply(new BigDecimal(orderSheet.getAmount())));
 //        redis缓存放入
-        Boolean success=orderRedis.addOrderByRedis(orderSheet);
+        Boolean success = orderRedis.addOrderByRedis(orderSheet);
         String message = success ? "抢购成功" : "抢购失败";
-        if (Objects.equals(message, "抢购失败")){
+        if (Objects.equals(message, "抢购失败")) {
             return Result.succ(message);
         }
 //        redis缓存放入
         orderSheetService.insert(orderSheet);
-        return Result.succ(JSONObject.toJSONString(orderSheet.getId(),true));
+        return Result.succ(JSONObject.toJSONString(orderSheet.getId(), true));
 
     }
 

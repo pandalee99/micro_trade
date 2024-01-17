@@ -28,12 +28,11 @@ public class ShopCartController extends BaseController{
     @GetMapping("/get_all_cart/{id}")
     public Result get_all_order(@PathVariable(name = "id") Long id) {
 
-        List<ShoppingCart> shoppingCarts=new ArrayList<>();
+        List<ShoppingCart> shoppingCarts;
         shoppingCarts=shoppingCartService.selectByUserId(id);
         List<OrderSheet> orderSheets=new ArrayList<>();
-        RandomId randomId=new RandomId();
         for (ShoppingCart sc:shoppingCarts) {
-            Product product=new Product();
+            Product product;
             product=productService.selectOneById(sc.getProductId());
             OrderSheet orderSheet=new OrderSheet();
             orderSheet.setId(sc.getId());

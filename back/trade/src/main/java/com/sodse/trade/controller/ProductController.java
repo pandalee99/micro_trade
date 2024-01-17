@@ -11,14 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
-public class ProductController  extends BaseController{
-
-//    @GetMapping("/products")
-//    public Result AllProducts(){
-//        return Result.succ(productService.find());
-//    }
+public class ProductController extends BaseController {
 
     @GetMapping("/products")
     public Result list(@RequestParam(defaultValue = "1") Integer currentPage){
@@ -42,62 +39,61 @@ public class ProductController  extends BaseController{
         return Result.succ(MapUtil.builder()
                 .put("lists", res)
                 .put("currentPage", currentPage)
-                .put("total",products.size())
-                .put("pageSize",pageSize)
+                .put("total", products.size())
+                .put("pageSize", 10)
                 .map());
     }
 
 
     @GetMapping("/product/{id}")
-    public Result detail(@PathVariable(name = "id") Long id){
+    public Result detail(@PathVariable(name = "id") Long id) {
 //        Product product=productService.selectByPrimaryKey(id);
-        Product product=productService.selectOneById(id);
+        Product product = productService.selectOneById(id);
 //        属性单选框
-        String[] r1=product.getProperties1().split(" ");
-        List<ForDto> radioDtos1 =new ArrayList<ForDto>();
-        for (int i = 0; i <r1.length ; i++) {
-            ForDto radioDto1 =new ForDto();
-            radioDto1.setId(i+1);
+        String[] r1 = product.getProperties1().split(" ");
+        List<ForDto> radioDtos1 = new ArrayList<ForDto>();
+        for (int i = 0; i < r1.length; i++) {
+            ForDto radioDto1 = new ForDto();
+            radioDto1.setId(i + 1);
             radioDto1.setName(r1[i]);
             radioDtos1.add(radioDto1);
         }
 
-        String[] r2=product.getProperties2().split(" ");
-        List<ForDto> radioDtos2 =new ArrayList<ForDto>();
-        for (int i = 0; i <r2.length ; i++) {
-            ForDto radioDto2 =new ForDto();
-            radioDto2.setId(i+1);
+        String[] r2 = product.getProperties2().split(" ");
+        List<ForDto> radioDtos2 = new ArrayList<ForDto>();
+        for (int i = 0; i < r2.length; i++) {
+            ForDto radioDto2 = new ForDto();
+            radioDto2.setId(i + 1);
             radioDto2.setName(r2[i]);
             radioDtos2.add(radioDto2);
         }
 
         //内容
-        String[] c=product.getContent().split("\n");
-        List<ForDto> contents=new ArrayList<ForDto>();
-        for (int i = 0; i <c.length ; i++) {
-            ForDto content =new ForDto();
-            content.setId(i+1);
+        String[] c = product.getContent().split("\n");
+        List<ForDto> contents = new ArrayList<ForDto>();
+        for (int i = 0; i < c.length; i++) {
+            ForDto content = new ForDto();
+            content.setId(i + 1);
             content.setName(c[i]);
             contents.add(content);
         }
 
 
-//        return Result.succ(product);
         return Result.succ(MapUtil.builder()
                 .put("product", product)
                 .put("radio1", radioDtos1)
                 .put("radio2", radioDtos2)
-                .put("contents",contents)
+                .put("contents", contents)
                 .map());
     }
 
     @GetMapping("/if_collection/{pid}/{uid}")
-    public Result if_focus(@PathVariable(name = "pid") Long pid,@PathVariable(name = "uid") Long uid){
-        String flag="未收藏";
+    public Result if_focus(@PathVariable(name = "pid") Long pid, @PathVariable(name = "uid") Long uid) {
+        String flag = "未收藏";
         List<UserCollection> userCollections = userCollectionService.selectByUserId(uid);
-        for (UserCollection c:userCollections) {
-            if (pid.equals(c.getProductId())){
-                flag="已收藏";
+        for (UserCollection c : userCollections) {
+            if (pid.equals(c.getProductId())) {
+                flag = "已收藏";
                 break;
             }
         }
@@ -106,24 +102,23 @@ public class ProductController  extends BaseController{
     }
 
     @GetMapping("/add_collection/{pid}/{uid}")
-    public Result add_collection(@PathVariable(name = "pid") Long pid,@PathVariable(name = "uid") Long uid){
-        String flag="已收藏";
-        UserCollection userCollection=new UserCollection();
+    public Result add_collection(@PathVariable(name = "pid") Long pid, @PathVariable(name = "uid") Long uid) {
+        String flag = "已收藏";
+        UserCollection userCollection = new UserCollection();
         userCollection.setId(new RandomId().nextId());
         userCollection.setUserId(uid);
         userCollection.setProductId(pid);
         userCollectionService.insert(userCollection);
         return Result.succ(flag);
     }
+
     @GetMapping("/delete_collection/{pid}/{uid}")
-    public Result delete_collection(@PathVariable(name = "pid") Long pid,@PathVariable(name = "uid") Long uid){
-        String flag="取消收藏";
-        userCollectionService.deleteByUserIdAndProductId(uid,pid);
+    public Result delete_collection(@PathVariable(name = "pid") Long pid, @PathVariable(name = "uid") Long uid) {
+        String flag = "取消收藏";
+        userCollectionService.deleteByUserIdAndProductId(uid, pid);
 
         return Result.succ(flag);
     }
-
-
 
 
 }

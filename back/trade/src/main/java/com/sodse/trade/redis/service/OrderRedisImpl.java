@@ -12,7 +12,7 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.io.IOException;
 
 @Service
-public class OrderRedisImpl implements OrderRedis{
+public class OrderRedisImpl implements OrderRedis {
     @Override
     public Boolean addOrderByRedis(OrderSheet orderSheet) {
         Long productId = orderSheet.getProductId();
@@ -20,16 +20,16 @@ public class OrderRedisImpl implements OrderRedis{
         JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
         jedis = pool.getResource();
         try {
-            if (!jedis.exists("product_stock_"+productId)){
-                byte[] bytes = jedis.get(("get_product_"+productId).getBytes());
-                Product p =(Product) SerializeUtil.unserialize(bytes);
-                jedis.set("product_stock_"+productId,p.getStock()+"");
-            }else {
-                if (jedis.get("product_stock_"+productId).equals("0")){
+            if (!jedis.exists("product_stock_" + productId)) {
+                byte[] bytes = jedis.get(("get_product_" + productId).getBytes());
+                Product p = (Product) SerializeUtil.unserialize(bytes);
+                jedis.set("product_stock_" + productId, p.getStock() + "");
+            } else {
+                if (jedis.get("product_stock_" + productId).equals("0")) {
                     return false;
                 }
-                jedis.decrBy("product_stock_"+productId , 1);
-                jedis.lpush(("order_product_"+productId).getBytes() ,SerializeUtil.serialize(orderSheet));
+                jedis.decrBy("product_stock_" + productId, 1);
+                jedis.lpush(("order_product_" + productId).getBytes(), SerializeUtil.serialize(orderSheet));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,8 +40,6 @@ public class OrderRedisImpl implements OrderRedis{
         }
 
         pool.destroy();
-
-
 
 
         return true;

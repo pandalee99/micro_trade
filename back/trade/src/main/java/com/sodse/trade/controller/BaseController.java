@@ -50,7 +50,7 @@ public class BaseController {
     @Autowired
     CouponsService couponsService;
     @Autowired
-   public   ChatRecordService chatRecordService;
+    public ChatRecordService chatRecordService;
     @Autowired
     CategoryService categoryService;
     @Autowired

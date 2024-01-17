@@ -38,20 +38,20 @@ public class LoginController extends BaseController {
 //                .map()
 //        );
 
-        BCryptPasswordEncoder code=new BCryptPasswordEncoder();
-        User user= userService.selectOneByUsername(loginDto.getUsername());
-        if (user==null){
+        BCryptPasswordEncoder code = new BCryptPasswordEncoder();
+        User user = userService.selectOneByUsername(loginDto.getUsername());
+        if (user == null) {
             return Result.succ("错误");
         }
         boolean flag = code.matches(
                 loginDto.getPassword(),
                 user.getPassword());
-        if (!flag){
+        if (!flag) {
             return Result.succ("错误");
         }
-        String jwt= authService.login( loginDto.getUsername(), loginDto.getPassword() );
-        response.setHeader("Authorization",jwt);//放置响应头中
-        response.setHeader("Access-control-Expose-Headers","Authorization");
+        String jwt = authService.login(loginDto.getUsername(), loginDto.getPassword());
+        response.setHeader("Authorization", jwt);//放置响应头中
+        response.setHeader("Access-control-Expose-Headers", "Authorization");
 
         return Result.succ(user);
 
@@ -76,26 +76,26 @@ public class LoginController extends BaseController {
 
     // 登录
     @RequestMapping(value = "/login2", method = RequestMethod.POST)
-    public String createToken( String username,String password ) throws AuthenticationException {
+    public String createToken(String username, String password) throws AuthenticationException {
         System.out.println("进入");
-        return authService.login( username, password ); // 登录成功会返回JWT Token给用户
+        return authService.login(username, password); // 登录成功会返回JWT Token给用户
     }
 
-//    @PostMapping(value = "/register")
+    //    @PostMapping(value = "/register")
 //    public Integer register( @RequestBody User addedUser ) throws AuthenticationException {
 //        return authService.register(addedUser);//返回1表示注册成功
 //    }
     @PostMapping(value = "/register")
-    public Result register(@Validated @RequestBody User register_user , HttpServletResponse response ) throws AuthenticationException {
+    public Result register(@Validated @RequestBody User register_user, HttpServletResponse response) throws AuthenticationException {
         authService.register(register_user);
 
 
-        String jwt= authService.login( register_user.getUsername(), register_user.getPassword() );
+        String jwt = authService.login(register_user.getUsername(), register_user.getPassword());
 
-        User user= userService.selectOneByUsername(register_user.getUsername());
+        User user = userService.selectOneByUsername(register_user.getUsername());
 
-        response.setHeader("Authorization",jwt);//放置响应头中
-        response.setHeader("Access-control-Expose-Headers","Authorization");
+        response.setHeader("Authorization", jwt);//放置响应头中
+        response.setHeader("Access-control-Expose-Headers", "Authorization");
 
         return Result.succ(user);
     }
